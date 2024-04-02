@@ -2,6 +2,8 @@
 #include <Adafruit_MQTT.h>
 #include <Adafruit_MQTT_Client.h>
 #include <LiquidCrystal.h>
+#include <ThingSpeak.h>
+
 
 // Header file containing credentials such as SSID,PASS, AIO_USERNAME & AIO_KEY
 #include "Credentials.h" 
@@ -11,6 +13,10 @@ WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
 
 Adafruit_MQTT_Subscribe switchbutton = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/switchbutton");
+
+ unsigned long myChannelNumber =2494362; 
+
+ const char * myWriteAPIKey ="75EPXYFOYF1TAQPI"; 
 
 const int lightSensorPin = A0;
 const int ledPin = D7;
@@ -60,6 +66,8 @@ void MQTT_connect() {
 void setup() {
   Serial.begin(115200);
   connectWiFi();
+  ThingSpeak.begin(client); 
+
   pinMode(ledPin, OUTPUT);
 
   // Set up the LCD
@@ -95,6 +103,7 @@ void loop() {
   }
 
   int lightIntensity = analogRead(lightSensorPin);
+
   Serial.print("Light Intensity(lux): ");
   Serial.println(lightIntensity);
 
@@ -108,7 +117,9 @@ void loop() {
   // Publish light intensity value to Adafruit IO feed using key value
   if (!mqtt.publish(AIO_USERNAME "/feeds/light-intensity", String(lightIntensity).c_str())) {
     Serial.println("Failed to publish light intensity value!");
-  } else {
   }
+
+  ThingSpeak.writeField(2494362, 1,lightIntensity,"75EPXYFOYF1TAQPI"); 
+
   delay(6000); 
 }
