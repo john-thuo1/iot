@@ -1,6 +1,6 @@
 
 ## Case Study 2 Overview
-In Case Study 2, I used ESP8266 to read Soil Moisture, Humidity & Temperature Sensor Data and sent it to ThingSpeak for visualization.
+In Case Study 2, I used ESP8266 Node MCU, Soil Moisture Sensor, and DHT11 Sensor to capture Soil Moisture Level, Temperature, and Humidity. This data was then visualized on the LCD and ThingSpeak Platform. 
 
 ### Storing Case Study 2 Credentials for Local Running
 1. **Create `case2_credentials.h` file**: 
@@ -28,7 +28,7 @@ In Case Study 2, I used ESP8266 to read Soil Moisture, Humidity & Temperature Se
     ```
 
 ## Case Study 3 Overview
-In Case Study 3,  I used Adafruit to display Light Intensity captured by the LDR Sensor. Ada fruit's MQTT broker was also used to simulate a Publish/Subscribe model.
+In Case Study 3,  I used Adafruit to display Light Intensity captured by the LDR Sensor. Ada Fruit's MQTT broker was also used to simulate a Publish/Subscribe model.
 
 ### Storing Credentials
 1. **Create `case3_credentials.h` file**: 
@@ -38,16 +38,16 @@ In Case Study 3,  I used Adafruit to display Light Intensity captured by the LDR
     - In `case3_credentials.h`, define the following credentials:
     
     ```cpp
-    #define WLAN_SSID       "May"
-    #define WLAN_PASS       "68272541"
+    #define WLAN_SSID       "WIFI SSID"
+    #define WLAN_PASS       "WIFI Password"
     
     #define AIO_SERVER      "io.adafruit.com"
     #define AIO_SERVERPORT  1883
-    #define AIO_USERNAME    "ABCDjohnEFGH"
-    #define AIO_KEY         "aio_NhGW77ZeogF4OsctNE7NlkQiJWxb"
+    #define AIO_USERNAME    "Your Adafruit's Username"
+    #define AIO_KEY         "Your Adafruit's API KEY"
     
-    #define myChannelNumber   YourChannelNumber
-    const char* myWriteAPIKey  = "Your WriteAPIKey";
+    #define myChannelNumber   YourThingSpeakChannelNumber
+    const char* myWriteAPIKey  = "Your ThingSpeak WriteAPIKey";
     ```
         
 3. **Include Credentials in the Main Sketch**:
