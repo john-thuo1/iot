@@ -4,13 +4,9 @@
 #include <DHT.h>
 #include <ThingSpeak.h>
 
-// WiFi credentials
-const char* ssid = "May";
-const char* password = "22156827254";
+// Credentials such as SSID, password, API keys & ChannelID are stored in here
+#include "case2_credentials.h" 
 
-// ThingSpeak credentials
-const char* write_apiKey = "8V5RH4IY6ZXO1PVU";
-const unsigned long channelID = 2491003;
 
 // Define pins for sensors
 const int dhtPin = D4;
