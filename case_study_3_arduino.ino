@@ -5,7 +5,7 @@
 #include <ThingSpeak.h>
 
 
-// Header file containing credentials such as SSID,PASS, AIO_USERNAME & AIO_KEY
+// Header file containing credentials such as SSID, PASS, AIO_USERNAME, AIO_KEY, ThingSpeak ChannelNumber & WriteAPIKey
 #include "case3_credentials.h" 
 
 
@@ -14,9 +14,6 @@ Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO
 
 Adafruit_MQTT_Subscribe switchbutton = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/switchbutton");
 
- unsigned long myChannelNumber =2494362; 
-
- const char * myWriteAPIKey ="75EPXYFOYF1TAQPI"; 
 
 const int lightSensorPin = A0;
 const int ledPin = D7;
@@ -119,7 +116,7 @@ void loop() {
     Serial.println("Failed to publish light intensity value!");
   }
 
-  ThingSpeak.writeField(2494362, 1,lightIntensity,"75EPXYFOYF1TAQPI"); 
+  ThingSpeak.writeField(myChannelNumber, 1,lightIntensity,myWriteAPIKey); 
 
   delay(6000); 
 }
