@@ -37,7 +37,7 @@ In Case Study 3, I used Adafruit to display Light Intensity captured by the LDR 
      #define WLAN_PASS       "WIFI Password"
      
      #define AIO_SERVER      "io.adafruit.com"
-     #define AIO_SERVERPORT  1883
+     #define AIO_SERVERPORT  ****
      #define AIO_USERNAME    "Your Adafruit's Username"
      #define AIO_KEY         "Your Adafruit's API KEY"
      
